@@ -1,0 +1,19 @@
+{
+  "name": "OpenDNS Investigate",
+  "version": "1",
+  "default_locale": "en",
+  "description": "Browser plugin for investigating your current domain in the OpenDNS Investigate platform",
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon_19.png",
+      "38": "images/icon_38.png"
+    },
+    "default_title": "OpenDNS Investigate"
+  },
+  "permissions": ["activeTab", "tabs"],
+}
