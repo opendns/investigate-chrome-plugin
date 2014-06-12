@@ -5,7 +5,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       , redirect = 'https://investigate.opendns.com/'
     ;
 
-    if (current.length === 0) {
+    if (current.length === 0 || current.indexOf('.') < 0) {
         return;
     }
 
