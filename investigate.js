@@ -1,5 +1,5 @@
-chrome.browserAction.onClicked.addListener(function( tabs.Tab tab) {
-    var current = strip(tab.getCurrent())
+chrome.browserAction.onClicked.addListener(function(tab) {
+    var current = strip(tab.url)
         // ipV4 right now :-(
       , ipRegex = RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$','')
       , redirect = 'https://investigate.opendns.com/'
@@ -9,13 +9,11 @@ chrome.browserAction.onClicked.addListener(function( tabs.Tab tab) {
         return;
     }
 
-    if (ipRegex.test(currentURL)) {
-        redirect = redirect + 'ip-view/';
+    if (ipRegex.test(current)) {
+        redirect = redirect + 'ip-view/' + encodeURIComponent(current);
     } else {
-        redirect = redirect + '/domain-view/name/';
+        redirect = redirect + 'domain-view/name/' + encodeURIComponent(current) + '/view';
     }
-
-    redirect = redirect + encodeURIComponent(current);
 
     // Create new tab with our new url
     chrome.tabs.create({ url: redirect });
